@@ -1,5 +1,4 @@
-# Menggunakan Thymeleaf
-
+# Thymeleaf sebagai Front End Aplikasi
 
 ## Overview Thymeleaf
 
@@ -71,3 +70,54 @@ C:.
     │       └───templates
     └───test
 ```
+
+## Membuat Halaman Halo World
+
+Gak updol ya klo kita lagi belajar bahasa pemograman klo gak nampilin Halo World dulu baik itu di console maupun di Web, 
+OK sekarang coba anda buat file dengan tipe `.html` yang diletakan di `src/main/resources/templates` dengan nama file `halo.html` seperti berikut:
+
+```html
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div th:text="'Halo ini dari Thymeleaf'">Halo ini dari HTML</div>
+</body>
+</html>
+```
+
+Nah jadi saya jelaskan dulu, klo anda perhatikan ya ini udah di singung di [bagian ini](#overview_thymeleaf) jadi 
+adanya `th:*` akan merubah nilainya tergantung dimana di runningnya dan juga karena tag `th:text` tidak termasuk dalam element html
+artinya hanya ada di tymeleaf maka kita harus include dulu dari `<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">...</html>`
+
+Nah sekarang buat controllernya untuk mendaftarkan url di spring dan juga file `halo.html` di render sebagai view di spring mvcnya, 
+Buat class baru didalam package `com.dimas.maryanto.thymeleaf.controller` dengan nama `HaloController` seperti berikut:
+
+```java
+package com.dimas.maryanto.thymeleaf.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class HaloController {
+
+    @GetMapping(value = {"/halo"})
+    public String sayHalo() {
+        return "halo";
+    }
+}
+```
+
+Setelah itu coba anda jalankan dengan menggunakan perintah terminal/command promnt 
+
+```bash
+mvn clean package spring-boot:run
+```
+
+Setelah itu coba anda browse di browser anda [localhost:8080/halo](http://localhost:8080/halo), maka hasilnya akan sama seperti [gambar ini](#halo_thymeleaf)
