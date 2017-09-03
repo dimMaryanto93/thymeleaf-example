@@ -1,5 +1,8 @@
 # Menggunakan Thymeleaf
 
+
+## Overview Thymeleaf
+
 Thymeleaf adalah Java Library yang digunakan untuk mentrasformasikan (render) data 
 atau mem-produce text dari server, thymeleaf ini berbentuk XML/HTML format.
 
@@ -28,3 +31,43 @@ Dijalankan langung dari file:
 Dijalankan menggunakan springboot dengan template engine thymeleaf:
 
 ![Halo Thymeleaf](images/halo-thymeleaf.png)
+
+## Standard Dialect in Thymeleaf
+
+Standard dialect ini merupakan tag atau attribut tambahan yang disisipkan dalam element HTML/JavaScript/CSS dll yang bertujuan 
+untuk menampilkan object yang diset dari request servlet conteks yang kemudian dirender. Contohnya jika anda sudah lumayan familiar dengan JSP contohnya seperti ini:
+
+```jsp
+<form:input type="text" path="someProperty"/>
+```
+
+Maka jika menggunakan thymeleaf standar dialect seperti berikut:
+
+```html
+<input type="input" name="someProperty" value="Halo ini dari HTML" th:value="Halo ini dari Thymeleaf"/> 
+```
+
+## Membuat Project
+
+Untuk membuat Project kita bisa menggunakan Tempate projectnya springboot yang bisa digenerate dari sitenya springframework yaitu
+[start.spring.io](https://start.spring.io) nanti akan muncul halaman seperti berikut:
+
+![Spring Boot Template Project](images/springboot-init.png)
+
+Kemudian kita bisa pilih dependencynya yaitu `WEB`, `Thymeleaf` dan `Lombok` setelah itu isi `artifactId`, `groupId` kemudian click Generate Project.
+Setalah itu nanti dia akan didownload, setelah download selesai langsung diextract saja, nani akan terbuat strukut dir project maven seperti berikut:
+
+```bash
+Folder PATH listing for volume Windows10
+Volume serial number is 52C4-3896
+C:.
+├───.mvn
+│   └───wrapper
+└───src
+    ├───main
+    │   ├───java
+    │   └───resources
+    │       ├───static
+    │       └───templates
+    └───test
+```
